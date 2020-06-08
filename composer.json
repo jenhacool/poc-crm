@@ -1,0 +1,15 @@
+{
+    "name": "poc/poc-crm",
+    "description": "POC CRM system",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "POC\\CRM\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "POC\\CRM\\Tests\\": "tests/"
+        }
+    }
+}
