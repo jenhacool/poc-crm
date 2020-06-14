@@ -38,6 +38,22 @@ class Test_Class_POC_CRM extends WP_UnitTestCase
                 array( $this->instance->rest_api, 'register_rest_routes' )
             )
         );
+
+        $this->assertGreaterThan(
+            0,
+            has_action(
+                'admin_post_nopriv_poc_crm_login',
+                array( $this->instance->auth, 'login' )
+            )
+        );
+
+        $this->assertGreaterThan(
+            0,
+            has_action(
+                'admin_post_poc_crm_login',
+                array( $this->instance->auth, 'login' )
+            )
+        );
     }
 
     public function test_add_rewrite_rules()
@@ -46,8 +62,11 @@ class Test_Class_POC_CRM extends WP_UnitTestCase
 
         $this->instance->add_rewrite_rules();
 
-        $this->assertArrayHasKey( 'crm', $wp_rewrite->extra_rules_top );
-        $this->assertSame( 'index.php?pagename=crm', $wp_rewrite->extra_rules_top['crm'] );
+        $this->assertArrayHasKey( 'poc-crm/login', $wp_rewrite->extra_rules_top );
+        $this->assertSame( 'index.php?pagename=poc-crm-login', $wp_rewrite->extra_rules_top['poc-crm/login'] );
+
+        $this->assertArrayHasKey( 'poc-crm/dashboard', $wp_rewrite->extra_rules_top );
+        $this->assertSame( 'index.php?pagename=poc-crm-dashboard', $wp_rewrite->extra_rules_top['poc-crm/dashboard'] );
     }
 
     public function test_include_template()
@@ -58,10 +77,16 @@ class Test_Class_POC_CRM extends WP_UnitTestCase
 
         $this->assertEquals( 'original_template', $template );
 
-        set_query_var( 'pagename', 'crm' );
+        set_query_var( 'pagename', 'poc-crm-login' );
 
         $template = $this->instance->include_template( 'original_template' );
 
-        $this->assertEquals( POC_CRM_PLUGIN_DIR . 'views/crm.php', $template );
+        $this->assertEquals( POC_CRM_PLUGIN_DIR . 'views/login.php', $template );
+
+        set_query_var( 'pagename', 'poc-crm-dashboard' );
+
+        $template = $this->instance->include_template( 'original_template' );
+
+        $this->assertEquals( POC_CRM_PLUGIN_DIR . 'views/dashboard.php', $template );
     }
 }

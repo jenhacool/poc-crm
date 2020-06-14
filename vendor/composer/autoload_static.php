@@ -27,6 +27,7 @@ class ComposerStaticInitffbef8dce7ae4376aea49546cff821f8
 
     public static $classMap = array (
         'POC\\CRM\\POC_CRM' => __DIR__ . '/../..' . '/app/class-poc-crm.php',
+        'POC\\CRM\\POC_CRM_Auth' => __DIR__ . '/../..' . '/app/class-poc-crm-auth.php',
         'POC\\CRM\\POC_CRM_REST_API' => __DIR__ . '/../..' . '/app/class-poc-crm-rest-api.php',
         'POC\\CRM\\REST\\POC_CRM_Abstract_Controller' => __DIR__ . '/../..' . '/app/rest-api/class-poc-crm-abstract-controller.php',
         'POC\\CRM\\REST\\POC_CRM_Auth_Controller' => __DIR__ . '/../..' . '/app/rest-api/class-poc-crm-auth-controller.php',

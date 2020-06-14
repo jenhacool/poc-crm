@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'POC\\CRM\\POC_CRM' => $baseDir . '/app/class-poc-crm.php',
+    'POC\\CRM\\POC_CRM_Auth' => $baseDir . '/app/class-poc-crm-auth.php',
     'POC\\CRM\\POC_CRM_REST_API' => $baseDir . '/app/class-poc-crm-rest-api.php',
     'POC\\CRM\\REST\\POC_CRM_Abstract_Controller' => $baseDir . '/app/rest-api/class-poc-crm-abstract-controller.php',
     'POC\\CRM\\REST\\POC_CRM_Auth_Controller' => $baseDir . '/app/rest-api/class-poc-crm-auth-controller.php',
